@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .image {
+            -webkit-animation: spin 10s linear infinite;
+            -moz-animation: spin 4s linear infinite;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @-moz-keyframes spin {
+            100% {
+                -moz-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+
+
+        }
+
+        input[type=range][orient=vertical] {
+            writing-mode: bt-lr;
+            /* IE */
+            -webkit-appearance: slider-vertical;
+            /* WebKit */
+            width: 8px;
+            height: 500px;
+            padding: 0 5px;
+        }
+
+
+
+
+        
+    </style>
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="img/univ.png" class="img-fluid img-thumbnail" alt="logo-univ" srcset="">
+            </div>
+            <div class="col-sm-6 align-middle text-center">
+                <h2 style="padding-top: 20%;padding-bottom: 5%;" class="text-primary ">
+                    Commander les objets à travers une interface web serveur
+                </h2>
+                <h5 style="color : #fd7e14;">Réalisé par : Ahmed Ouerghemmi</h5>
+            </div>
+            <div class="col-sm-3">
+                <img src="img/isim_logo.png" alt="logo-fac" class="img-fluid img-thumbnail" srcset="">
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td>
+                        <img id="lamp-img" src="img/lamp-off.png" alt="" srcset="">
+                    </td>
+                    <td>
+                        <img id="fan-img" src="img/fan2.png" class="center" style="height:70%;width:70%" alt=""
+                            srcset="">
+                    </td>
+                    <td>
+                        <input type="range" orient="vertical" max="100" min="0" class="" id="range">
+                    </td>
+                </tr>
+                <tr>
+                    <td ><input type="checkbox" data-toggle="toggle" style="margin-left: 50% !important; " id="lamp-btn" ></td>
+                    <td ><input class="center" id="fan-btn" type="checkbox" data-toggle="toggle"></td>
+                    <td id="temp-val">50°C</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#lamp-btn").on("change", function () {
+                //alert("ff");
+                if ($("#lamp-img").attr('src') == "img/lamp-off.png")
+                    $("#lamp-img").attr("src", "img/lamp-on.png");
+                else
+                    $("#lamp-img").attr("src", "img/lamp-off.png");
+            });
+
+            $("#fan-btn").on("change", function () {
+                if ($('#fan-img').hasClass('image')) {
+                    $('#fan-img').removeClass('image');
+                }
+                else {
+                    $('#fan-img').addClass('image');
+                }
+            });
+
+            $("#range").on("change", function () {
+                $("#temp-val").html($("#range").val() + "°C");
+            });
+        });
+    </script>
+</body>
+
+</html>
